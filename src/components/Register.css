@@ -1,0 +1,27 @@
+.register-section{
+    background-color: #134155;
+    color:white;
+    padding: 1rem;
+}
+
+.register-section label{
+	margin: 2rem 2rem;
+}
+
+.register-section input{
+	margin: 0.3rem 0.5rem;
+}
+
+.register-section button{
+	margin: 0.3rem 0.5rem;
+	background-color: transparent;
+	color: white;
+	border: 2px solid white;
+	padding: 0.5rem;
+	margin: 0.5rem;
+}
+
+.register-section button:hover {
+	background-color: hotpink;
+	color: white;
+}
