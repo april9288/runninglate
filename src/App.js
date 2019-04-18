@@ -8,6 +8,14 @@ import UserList from './components/UserList';
 import Situation from './components/Situation';
 import Footer from './components/Footer';
 import Status from './components/Status';
+import {db} from './db/config';
+
+let port
+if (process.env.NODE_ENV === "development") {
+  port = "http://localhost:3001"
+} else {
+  port = "https://runninglate.herokuapp.com"
+}
 
 class App extends Component {
   state={
@@ -19,24 +27,32 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getUserData()
+    this.getUserDataFromFB()
   }
 
-  getUserData = async () => {
-    //state user list update
-    let dbResponse = await axios.post(`https://runninglate.herokuapp.com/userData`)
-    this.setState({userData: dbResponse.data})
+  getUserDataFromFB = () => {
+    db.ref('user')
+    .on('value', (snapshot)=> {
+      const results = []
+      snapshot.forEach(childSnapShot => {
+        results.push({
+          id:childSnapShot.key,
+          ...childSnapShot.val()
+        })
+      })
+      this.setState({userData:results})
+    })
   }
 
   handleSubmit = async (e) => {
     e.preventDefault()
     let handle = e.target.elements.handle.value
     let email = e.target.elements.email.value
-    let githubResponse = await axios.post(`https://runninglate.herokuapp.com/register?handle=${handle}&email=${email}`)
-
+    let githubResponse = await axios.post(`${port}/register?handle=${handle}&email=${email}`)
     try{
         if (githubResponse.data.status === 200) {
-          this.setState({userData : githubResponse.data.user, serverStatus : true})
+          db.ref("user").push(githubResponse.data.user)
+          this.setState({serverStatus : true})
         } else {
           this.setState({serverStatus : false})
         }
@@ -59,6 +75,7 @@ class App extends Component {
         })
         if (dbResponse.data.status === 200){
           this.setState({finish:"success"})
+          db.ref('user').off()
         } else {
           this.setState({finish:"fail"})
         }
