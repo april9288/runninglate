@@ -1,0 +1,30 @@
+.header-section{
+	width: 100%;
+	color:white;
+    background-color: #134155;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-section p{
+	margin: 0;
+	margin-left: 0.5rem;
+}
+
+.header-welcome{
+	font-size: 1.5rem;
+}
+
+.header-section button{
+	margin-right: 0.5rem;
+	background-color: transparent;
+	border: 2px solid white;
+	color: white;
+	cursor: pointer;
+}
+
+.header-section button:hover{
+	background-color: hotpink;
+}	

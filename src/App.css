@@ -1,3 +1,29 @@
 .App {
-  text-align: center;
+	text-align: center;
+	height: 100vh;
+	display: flex;
+    justify-content: center;
+	background: #8A2387;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, rgba(242, 113, 33, 0.8), rgba(233, 64, 87, 0.8), rgba(138, 35, 135, 0.8));  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, rgba(242, 113, 33, 0.8), rgba(233, 64, 87, 0.8), rgba(138, 35, 135, 0.8)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.loginPage{
+	flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loginTitle{
+	font-size: 3rem;
+	color: white;
+}
+
+.loginVisitor{
+	cursor: pointer;
+	color: blue;
+	text-decoration: underline;
+	background: transparent;
+    border: none;
 }

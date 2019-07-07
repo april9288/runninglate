@@ -6,7 +6,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #D82B3A;
+  
+  background-image: url("./photos/traffic.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+
 }
 
 code {
@@ -24,3 +29,6 @@ i{
   font-size: 3rem;
 }
 
+i:hover {
+  color: hotpink;
+}
