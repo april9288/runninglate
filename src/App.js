@@ -67,6 +67,10 @@ class App extends Component {
       })
     } else {
       auth().signOut()
+      this.setState({
+        isSignedIn: false,
+        firebaseUser: null
+      })
     }
   }
 
